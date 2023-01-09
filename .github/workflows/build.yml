@@ -1,7 +1,7 @@
 name: Build
 on:
   schedule:
-    - cron: "19 19 * * *"
+    - cron: "0 6 * * *"
   push:
     branches: ["main"]
 
@@ -18,8 +18,8 @@ jobs:
       fail-fast: false
       max-parallel: 1
       matrix:
-        variant: [silverblue, kinoite]
-        version: [36, 37, rawhide]
+        variant: [silverblue]
+        version: [37]
     runs-on: ubuntu-latest
     container:
       # We're using coreos-assembler just since it is a pre-made
