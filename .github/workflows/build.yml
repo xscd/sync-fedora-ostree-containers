@@ -19,7 +19,7 @@ jobs:
       max-parallel: 1
       matrix:
         variant: [silverblue]
-        version: [37]
+        version: [38]
     runs-on: ubuntu-latest
     container:
       # We're using coreos-assembler just since it is a pre-made
@@ -32,4 +32,4 @@ jobs:
       - name: Login
         run: podman login --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }} ${{ env.REGISTRY }}
       - name: Encapsulate
-        run: ./encap.sh fedora/${{ matrix.version }}/x86_64/testing/${{ matrix.variant }} ${{ env.REGISTRY }}/${{ github.repository_owner }}/fedora-${{ matrix.variant }}:${{ matrix.version }}
+        run: ./encap.sh fedora/${{ matrix.version }}/x86_64/${{ matrix.variant }} ${{ env.REGISTRY }}/${{ github.repository_owner }}/fedora-${{ matrix.variant }}:${{ matrix.version }}
